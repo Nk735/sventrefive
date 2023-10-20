@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    padding-top: 50px;
+    background-image:none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 16px;
+    background-color: #332D2A;
+    font-family: 'Roboto', sans-serif;
+}
+  
+a {text-decoration:none;}
+  
+h1, h2, h3, h4, h5, p {color: #000; padding-bottom: 0;}
+  
+.title-text {font-size: 70px;}
+.big-text {font-size: 50px;}
+.med-text {font-size: 40px;}
+.normal-text {font-size: 20px;}
+.small-text {font-size: 16px; text-align: justify;}
+.intro-text {text-transform: uppercase; font-size: 20px; font-weight: bold;}
+  
+.button {padding: 15px 25px; background: crimson; color: #fff; display: inline-block; border-radius: 4px;}
+.bold{
+  font-weight: 2000;
+}
+  
+.logo{max-height: 35px; width: 100%;}
+  
+.mt-1{margin-top: 50px;}
+.mt-2{margin-top: 100px;}
+.mt-3{margin-top: 150px;}
+  
+.ml-1{margin-left: 50px;}
+.ml-2{margin-left: 100px;}
+.ml-3{margin-left: 150px;}
+.mr-3{margin-right: 150px;}
+  
+.tw{color: #fff;}
+.tbl{color: #154D6D;}
+.tbkg{color: #FAF1E2;}
+.tred{color: #8C452B;}
+  
+.center{
+  text-align: center;
+  align-items: center;
+}
+  
+.img_center{
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+  
+.border{
+  border-radius: 20px;
+}
+  
+@media (max-width: 768px) {
+  .big-text {font-size: 40px;}
+  .intro-text {text-transform: uppercase; font-size: 15px; font-weight: bold;}
+  .ml-1{margin-left: 20px;}
+  .ml-3{margin-left: 20px;}
+  .mr-3{margin-right: 0px;}
+  .mt-1{margin-top: 25px;}
+}
+
+/* END BEST STYLE */
+
+.button1 {
+  border-radius: 15px;
+  border: 2px solid;
+  border-color: #FF6D2E;
+  background-color: #FF6D2E;
+  width: 300px;
+  height: 50px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.button1_2 {
+  border-radius: 25px;
+  border: 2px solid;
+  border-color: #FF6D2E;
+  background-color: #FF6D2E;
+  width: 300px;
+  height: 50px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.button1:hover{
+  background-color: #fff;
+  color: #FF6D2E;
+}
+
+.button2 {
+  border-radius: 15px;
+  border: 2px solid;
+  border-color: #FF6D2E;
+  background-color: transparent;
+  width: 293px;
+  height: 44px;
+  font-size: 16px;
+  color: white;
+}
+.info{
+  color: rgb(126, 126, 126);
+}
