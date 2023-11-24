@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+*{
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  top: 0px;;
+}
 body {
     padding-top: 50px;
     background-image:none;
@@ -9,6 +15,8 @@ body {
     font-size: 16px;
     background-color: #332D2A;
     font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    transition: background-color 1.5s;
 }
   
 a {text-decoration:none;}
@@ -27,8 +35,9 @@ h1, h2, h3, h4, h5, p {color: #000; padding-bottom: 0;}
   font-weight: 2000;
 }
   
-.logo{max-height: 35px; width: 100%;}
-  
+.logo2{max-height: 35px; width: 100%;}
+
+.mt-0{margin-top: 10px;}
 .mt-1{margin-top: 50px;}
 .mt-2{margin-top: 100px;}
 .mt-3{margin-top: 150px;}
@@ -70,6 +79,40 @@ h1, h2, h3, h4, h5, p {color: #000; padding-bottom: 0;}
 
 /* END BEST STYLE */
 
+.navbar {
+    position: fixed;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #FF6D2E;
+}
+
+.navbar a {
+  color:white;
+}
+.navbar .logo{
+  font-size: 40px;
+  font-weight: bold;
+}
+.navbar .nav-links ul {
+  display: flex;
+}
+
+.navbar .nav-links ul li{
+  margin: 0 25px;
+}
+
+.navbar .nav-links ul li.active a{
+  margin: 0 0px;
+  color: #FF6D2E;
+  font-weight: 600;
+}
 .button1 {
   border-radius: 15px;
   border: 2px solid;
@@ -95,9 +138,13 @@ h1, h2, h3, h4, h5, p {color: #000; padding-bottom: 0;}
   cursor: pointer;
   transition: .5s;
 }
+.button1_2:hover{
+  background-color: #332D2A;
+  color: #FF6D2E;
+}
 
 .button1:hover{
-  background-color: #fff;
+  background-color: #332D2A;
   color: #FF6D2E;
 }
 
@@ -111,6 +158,54 @@ h1, h2, h3, h4, h5, p {color: #000; padding-bottom: 0;}
   font-size: 16px;
   color: white;
 }
-.info{
-  color: rgb(126, 126, 126);
+.buttonChiaro {
+  border-radius: 15px;
+  border: 2px solid;
+  border-color: #FF6D2E;
+  background-color: white;
+  width: 293px;
+  height: 44px;
+  font-size: 16px;
+  color: black;
+  cursor: pointer;
+}
+.buttonVerde {
+  border-radius: 15px;
+  border: 2px solid;
+  border-color: #FF6D2E;
+  background-color: #57AA9F;
+  width: 293px;
+  height: 44px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+}
+.buttonScuro {
+  border-radius: 15px;
+  border: 2px solid;
+  border-color: #FF6D2E;
+  background-color: #332D2A;
+  width: 293px;
+  height: 44px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+}
+
+.button_next {
+  border-radius: 50px;
+  border: 2px solid;
+  border-color: #FF6D2E;
+  background-color: #FF6D2E;
+  width: 100px;
+  height: 50px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.button_next:hover{
+  background-color: #332D2A;
+  color: #FF6D2E;
 }
