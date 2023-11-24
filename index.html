@@ -1,60 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="style.css" rel="stylesheet">
-  <title>Simple Social Network</title>
-</head>
-<body>
-  <div class="container center">
-    <h1>Simple Social Network</h1>
-    <form action="/post" method="post">
-      <textarea name="content" rows="4" cols="50" placeholder="What's on your mind?"></textarea><br>
-      <button type="submit">Post</button>
-    </form>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <title>Simple Social Network</title>
+   <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--> 
+  </head>
+  <body>
+    <!--Navbar-->
+    <nav class="navbar">
+      <a href="#" class="logo">Logo</a>
+      <div class="nav-links">
+        <ul>
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="https://www.instagram.com/nk735_/">@nk735</a></li>
+          <li><a href="#">@andrea</a></li>
+        </ul>
+      </div>
+    </nav>
+ 
 
-    <!--<h1>Artisti Seguiti su Spotify</h1>
-    <button id="getArtistsButton">Ottieni Artisti Seguiti</button>
-    <div id="artistsList"></div> -->
+    <!--Header-->
+    <div class="container center mt-3">
+      <!--
+      <h1>Simple Social Network</h1>
+      <form action="/post" method="post">
+        <textarea name="content" rows="4" cols="50" placeholder="What's on your mind?"></textarea><br>
+        <button type="submit">Post</button>
+      </form>
+    -->
 
-    <h1>Sing in to "nome progetto"</h1>
-    <a href=http://localhost:3000/login ><button  class="button1_2">Login width Spotify</button></a><br>
-    <form action="/user" method="post">
-      <label for="email" class="info">Email:</label><br>
-      <input type="email" id="email" name="email" class="button2"><br>
-      <label for="password" class="info mt-1">Password:</label>
-      <input type="password" id="password" name="password" class="button2"><br><br>
-      <input type="submit" value="Log in" class="button1">
-    </form>
-  </div>
+      <div class="big-text tw">Sign in to "nome progetto"</div> <br></br>
+      <a href=http://localhost:3000/login ><button  class="button1_2">Login width Spotify</button></a><br></br>
+      <div class="normal-text tw">or</div> <br></br>
+      <form action="/user" method="post">
+        <input type="email" id="email" name="email" class="button2" placeholder="  Inser your email"><br></br>
+        <input type="password" id="password" name="password" class="button2" placeholder="  Inser your password"><br></br>
+        <input type="submit" value="Create account" class="button1">
+      </form>
+      <div class="login-container">
+        <h1>Login</h1>
+        <form action="/login_normal" method="post">
+            <input type="text" name="email" class="button2" placeholder="Email" required>
+            <input type="password" name="password" class="button2" placeholder="Password" required>
+            <button type="submit" class="button1">Accedi</button>
+        </form>
+        <div id="error-message"></div>
+        <div id="topTracksContainer">
+          <!-- Qui verranno inseriti i risultati -->
+        </div>
+      </div>
+    </div>
 
 
-  <script>
-    /*
-      const getArtistsButton = document.getElementById('getArtistsButton');
-      const artistsList = document.getElementById('artistsList');
+    <!-- <script>
+      
+        const getArtistsButton = document.getElementById('getArtistsButton');
+        const artistsList = document.getElementById('artistsList');
 
-      getArtistsButton.addEventListener('click', () => {
-        // Effettua una richiesta alle API di Spotify per ottenere gli artisti seguiti
-        axios.get('/get_artisti', {
-          headers: {
-            'Authorization': `Bearer ${accessToken}`,
-          },
-        })
-          .then(response => {
-            const followedArtists = response.data.artists.items;
-            const artistNames = followedArtists.map(artist => artist.name);
-            artistsList.innerHTML = 'Artisti seguiti su Spotify: ' + artistNames.join(', ');
+        getArtistsButton.addEventListener('click', () => {
+          // Effettua una richiesta alle API di Spotify per ottenere gli artisti seguiti
+          axios.get('/get_artisti', {
+            headers: {
+              'Authorization': `Bearer ${accessToken}`,
+            },
           })
-          .catch(error => {
-            console.error('Errore durante il recupero degli artisti seguiti:', error);
-            artistsList.innerHTML = 'Si è verificato un errore durante la richiesta.';
-          });
-      }); 
-*/
-  </script>
-</body>
+            .then(response => {
+              const followedArtists = response.data.artists.items;
+              const artistNames = followedArtists.map(artist => artist.name);
+              artistsList.innerHTML = 'Artisti seguiti su Spotify: ' + artistNames.join(', ');
+            })
+            .catch(error => {
+              console.error('Errore durante il recupero degli artisti seguiti:', error);
+              artistsList.innerHTML = 'Si è verificato un errore durante la richiesta.';
+            });
+        }); 
+
+    </script> -->
+  </body>
 </html>
 
