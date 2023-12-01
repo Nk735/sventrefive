@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <title>Login NomeProgetto</title>
+    <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+</head>
+
+<body>
+    <!--Navbar-->
+    <nav class="navbar">
+        <img src="Logo.png" width="60" height="60" alt="Logo">
+        <div class="nav-links">
+            <ul>
+                <li><a href="https://www.instagram.com/nk735_/">@nk735</a></li>
+                <li><a href="https://www.instagram.com/andrea_damb17/">@andrea_damb</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!--Header-->
+    <div class="container center mt-3">
+        <div class="big-text tw">Log In to "nome progetto"</div> <br><br/>
+        <a href=http://localhost:3000/login><button class="button1_2">Log In with Spotify</button></a><br><br/>
+        <div class="normal-text tw">or</div> <br><br />
+        <div class="login-container">
+            <form action="/login_normal" method="post">
+                <input type="text" name="email" class="button2" placeholder="Email" required><br><br/>
+                <input type="password" name="password" class="button2" placeholder="Password" required><br><br/>
+                <button type="submit" class="button1">Log In</button>
+            </form>
+            <div id="error-message"></div>
+            <div id="toptrackscontainer">
+                qui verranno inseriti i risultati
+            </div><br><br/>
+            <div class="small-text tw">
+                Don't have an account? <a href="signup.html" class="links-text"> Create an Account </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
