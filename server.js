@@ -15,9 +15,13 @@ app.use(express.static('.'))
 
 main().catch((err) => console.log(err));
 async function main() {
+  console.log("connecting")
   mongoose.connect('mongodb://user:user@localhost:27017/social_network', { useNewUrlParser: true, useUnifiedTopology: true});
+  console.log("connected")
 }
-
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
 
 //LOGIN WIDTH SPOTIFY
 
@@ -25,6 +29,21 @@ const clientId = '654a81499ad1490bb441474e57f0454c';
 const clientSecret = '455a443a8506414fa19eb0fd0d929a6f';
 const redirectUri = 'http://localhost:3000/callback';
 
+// TABELLONI
+// Schema utenti
+const userSchema = new mongoose.Schema({
+  id: Number,
+  email: String,
+  password: String,
+  nome: String,
+  image: String,
+  token_spotify: String,
+});
+const User = mongoose.model('User', userSchema);
+
+
+
+// CHIAMATONE
 app.get('/login', (req, res) => {
   // Reindirizza l'utente a Spotify per l'autenticazione
   const spotifyAuthUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${redirectUri}&scope=user-read-private%20user-read-email`;
@@ -43,20 +62,33 @@ app.get('/callback', async (req, res) => {
       client_id: clientId,
       client_secret: clientSecret,
     },
-  });
+  })
 
   const accessToken = tokenResponse.data.access_token;
   // Ora puoi utilizzare accessToken per effettuare richieste alle API di Spotify a nome dell'utente autenticato
   // Ad esempio:
-   const userInfoResponse = await axios.get('https://api.spotify.com/v1/me', {
+  const userInfoResponse = await axios.get('https://api.spotify.com/v1/me', {
      headers: {
        'Authorization': `Bearer ${accessToken}`,
      },
+  }).then((res_axios)=>{
+
+    //LOGIN COMPLETATO
+    User.create({
+      nome: res_axios.data.display_name,
+      token_spotify: accessToken
+    }).then((res_mongo)=>{
+      console.log(res_mongo)
+      res.status(200).send(res_mongo.ObjectId)
+    }).catch(err => {
+      res.status(500)
+    })
+
+  }).catch((err)=>{
+    res.status(400)
   });
 
-  // Restituisci una risposta o effettua altre azioni qui
-  res.redirect("../chat.html");
-  
+
   //function verificaAutenticazione(req, res, next) {
    // if (req.session && req.session.user) {
    //   return next(); // L'utente è autenticato, passa alla pagina riservata
@@ -70,16 +102,7 @@ app.get('/callback', async (req, res) => {
   //  res.redirect("../home.html");
   //});
 });
-//LOGIN COMPLETATO
 
-// Schema utenti
-const userSchema = new mongoose.Schema({
-  email: String,
-  password: String,
-  token_spotify: String,
-});
-
-const User = mongoose.model('User', userSchema);
 
 // Set up a simple route to handle creating a new user
 app.post('/user', (req, res) => {
@@ -132,12 +155,10 @@ app.post('/login_normal', async (req, res) => {
 
 
 //your top 5 tracks from the last 30 days
-const token= 'BQAoUWdwhVJ1SeeX43kGj0dAebm2KKBwnwruPIXTgXnRYpz0qMqhQ8TZlwz-ozm3kTNMDyQ1Q1JpnpkS8ifEM5b2iQZ9Sm4dNFnLIZAuKJLMnk33RzYDnfeZ4NO_FEdGprZW6R7AWXFQH6Cni-yU-Sdc2N3LAqb2aMOitkTrZfB-QqIzFwKV6J9s_i7uw4XxkSM1SYfgqHyYnllMEn4XH_-b-bZMzw3ossMSkmWuSDWF4d5IWfzLAN0REI0vQB7gYddBuOH9lr0GCxYMfO_d';
-
 async function fetchWebApi(endpoint, method, body) {
   const res = await fetch(`https://api.spotify.com/${endpoint}`, {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: 'Bearer ${accessToken}',
     },
     method,
     body:JSON.stringify(body)
@@ -148,7 +169,7 @@ async function fetchWebApi(endpoint, method, body) {
 async function getTopTracks(){
   // Endpoint reference : https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks
   return (await fetchWebApi(
-    'v1/me/top/tracks?time_range=short_term&limit=10', 'GET'
+    'v1/me/top/tracks?time_range=long_term&limit=5', 'GET'
   )).items;
 }
 
@@ -161,6 +182,7 @@ async function ToppTracks() {
           `${name} by ${artists.map((artist) => artist.name).join(', ')}`
       )
     );
+    /*
     // Ottieni il riferimento all'elemento HTML
     const topTracksContainer = document.getElementById('topTracksContainer');
 
@@ -169,24 +191,113 @@ async function ToppTracks() {
       const trackElement = document.createElement('p');
       trackElement.textContent = track;
       topTracksContainer.appendChild(trackElement);
-    });
+    });*/
   } catch (error) {
     console.error('Errore durante il recupero delle top tracks:', error);
   }
 }
 // Chiamata alla funzione principale
 ToppTracks();
-const UserTrack = new mongoose.Schema({
-  tracks: String,
+
+const branoSchema = new mongoose.Schema({
+  titolo: String,
+  durata: String
+});
+const Brano = mongoose.model('Brano', branoSchema);
+
+const artistaSchema = new mongoose.Schema({
+  nome_artista: String,
+  genere: String
+});
+const Artista = mongoose.model('Artista', artistaSchema);
+
+const SPOTIFY_API_URL = 'https://api.spotify.com/v1/';
+app.get('/ottieni-artisti', async (req, res) => {
+  try {
+    const token = 'IL_TUO_TOKEN_DI_AUTORIZZAZIONE_DA_SPOTIFY'; // Assicurati di avere il token valido qui
+
+    const response = await axios.get(`${SPOTIFY_API_URL}browse/new-releases`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    // Esempio di elaborazione della risposta e salvataggio su MongoDB
+    const artistiDaSalvare = response.data.artisti.map((artista) => ({
+      nome: artista.name,
+      id_spotify: artista.id,
+      genere: artista.genere
+    }));
+
+    await Artista.insertMany(artistiDaSalvare);
+
+    res.status(200).json({ message: 'Artisti ottenuti e salvati su MongoDB!' });
+  } catch (error) {
+    console.error('Errore:', error);
+    res.status(500).json({ error: 'Si è verificato un errore durante l\'ottenimento degli artisti.' });
+  }
 });
 
-const Tracks = mongoose.model('Tracks', UserTrack);
+
+const branoArtistaSchema = new mongoose.Schema({
+  ID_brano: { type: mongoose.Schema.Types.ObjectId, ref: Brano },
+  ID_artista: { type: mongoose.Schema.Types.ObjectId, ref: Artista }
+});
+const BranoArtista = mongoose.model('BranoArtista', branoArtistaSchema);
+
+const preferenzeUtentiArtistaSchema = new mongoose.Schema({
+  ID_utente: { type: mongoose.Schema.Types.ObjectId, ref: User },
+  ID_artista: { type: mongoose.Schema.Types.ObjectId, ref: Artista }
+});
+const PreferenzeUtentiArtista = mongoose.model('PreferenzeUtentiArtista', preferenzeUtentiArtistaSchema);
+
+const preferenzeUtentiBranoSchema = new mongoose.Schema({
+  ID_utente: { type: mongoose.Schema.Types.ObjectId, ref: User },
+  ID_brano: { type: mongoose.Schema.Types.ObjectId, ref: BranoArtista }
+});
+const PreferenzeUtentiBrano = mongoose.model('PreferenzeUtentiBrano', preferenzeUtentiBranoSchema);
+
+const ConcertoSchema = new mongoose.Schema({
+  ID_artista: { type: mongoose.Schema.Types.ObjectId, ref: 'Artista' },
+  Data_concerto: { type: Date, required: false  },
+  Luogo: { type: String, required: false }
+});
+const Concerto = mongoose.model('Concerto', ConcertoSchema);
+
+// Rotta per ottenere gli eventi dei concerti di un artista da Spotify e salvarli nel database
+app.get('/artist/:id/concerts', async (req, res) => {
+  try {
+      const artistId = req.params.id; // ID dell'artista da Spotify
+
+      // Esempio di utilizzo dell'endpoint delle Spotify API per ottenere gli eventi di un artista
+      const response = await axios.get(`https://api.spotify.com/v1/artists/${artistId}/events`, {
+          headers: {
+              Authorization: `Bearer ${accessToken}`
+          }
+      });
+
+      const events = response.data; // Dati degli eventi ottenuti da Spotify API
+
+      // Salva ogni evento nel database
+      for (const event of events) {
+          const nuovoConcerto = new Concerto({
+              ID_artista: artistId,
+              Data_concerto: new Date(event.date), 
+              Luogo: event.place.name
+          });
+
+          await nuovoConcerto.save();
+      }
+
+      res.json({ message: 'Eventi dei concerti salvati nel database!' });
+  } catch (error) {
+      console.error('Errore durante il recupero degli eventi dei concerti:', error);
+      res.status(500).json({ error: 'Errore durante il recupero degli eventi dei concerti' });
+  }
+});
 
 
-
-
-
-
+/*
 // Define a basic schema for a post
 const postSchema = new mongoose.Schema({
   content: String
@@ -211,10 +322,8 @@ app.post('/post', (req, res) => {
   });
 });
 
-app.listen(port, '0.0.0.0', () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
 
+*/
 
 
 //Messaggi
