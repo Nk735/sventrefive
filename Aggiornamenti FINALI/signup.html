@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <title>Signup NomeProgetto</title>
+    <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+</head>
+
+<body>
+    <!--Navbar-->
+    <nav class="navbar">
+        <img src="Logo.png" width="60" height="60" alt="Logo">
+        <div class="nav-links">
+            <ul>
+                <li><a href="https://www.instagram.com/nk735_/">@nk735</a></li>
+                <li><a href="https://www.instagram.com/andrea_damb17/">@andrea_damb</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!--Header-->
+    <div class="container center mt-3">
+        <div class="big-text tw">Sign Up to "nome progetto"</div> <br></br>
+        <a href=http://localhost:3000/login><button class="roundButton">Sign Up with Spotify</button></a><br></br>
+        <div class="normal-text tw"> or </div> <br></br>
+        <form action="/user" method="post">
+            <input type="email" id="email" name="email" class="traspBox" placeholder="Insert your Email"><br></br>
+            <input type="password" id="password" name="password" class="traspBox" placeholder="Insert your Password"><br></br>
+            <input type="submit" value="Create Account" class="squareButton">
+        </form>
+    </div>
+
+</body>
+</html>

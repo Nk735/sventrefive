@@ -1,0 +1,406 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/code.css');
+
+* {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    padding-top: 50px;
+    background-image: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 16px;
+    background-color: #332D2A;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    transition: background-color 1.5s;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, p {
+    color: #000;
+    padding-bottom: 0;
+}
+
+.title-text {
+    font-size: 70px;
+}
+
+.big-text {
+    font-size: 50px;
+}
+
+.med-text {
+    font-size: 40px;
+}
+
+.normal-text {
+    font-size: 20px;
+}
+
+.small-text {
+    font-size: 16px;
+}
+
+.intro-text {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.links-text {
+    font-size: 16px;
+    color: #FF6D2E;
+    text-decoration: underline;
+}
+
+.bold {
+    font-weight: 2000;
+}
+
+.button {
+    padding: 15px 25px;
+    background: crimson;
+    color: #fff;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+
+.logo2 {
+    max-height: 35px;
+    width: 100%;
+}
+
+.mt-0 {
+    margin-top: 10px;
+}
+
+.mt-1 {
+    margin-top: 50px;
+}
+
+.mt-2 {
+    margin-top: 100px;
+}
+
+.mt-3 {
+    margin-top: 150px;
+}
+
+.ml-1 {
+    margin-left: 50px;
+}
+
+.ml-2 {
+    margin-left: 100px;
+}
+
+.ml-3 {
+    margin-left: 150px;
+}
+
+.mr-3 {
+    margin-right: 150px;
+}
+
+.mb-3 {
+    margin-bottom: 150px;
+}
+
+.tw {
+    color: #fff;
+}
+
+.tbl {
+    color: #154D6D;
+}
+
+.tbkg {
+    color: #FAF1E2;
+}
+
+.tred {
+    color: #8C452B;
+}
+
+.center {
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.bottomRight {
+    display: block;
+    position: fixed;
+    bottom: 40px;
+    right: 50px;
+}
+
+.img_center {
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.border {
+    border-radius: 20px;
+}
+
+
+
+/* END BEST STYLE */
+
+.navbar {
+    position: fixed;
+    top: 0px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #332D2A;
+    color: #fff;
+    justify-content: space-between;
+}
+
+    .navbar a {
+        color: white;
+    }
+
+    .navbar .nav-links ul {
+        display: flex;
+    }
+
+        .navbar .nav-links ul li {
+            margin: 15px;
+        }
+
+            .navbar .nav-links ul li.active a {
+                margin: 0 0px;
+                color: #FF6D2E;
+                font-weight: 600;
+            }
+
+.sideMenu {
+    position: fixed;
+    display: flex;
+    top: 0px;
+    right: 0px;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #FF6D2E;
+    color: #fff;
+    border: 2px solid;
+    border-right: 0px;
+    transition: .5s;
+    transform: translateX(100%)
+}
+
+.openSideMenu {
+    transform: translateX(0%)
+}
+
+.sideMenu a {
+    color: white;
+}
+
+.sideMenu .nav-links {
+    justify-content: space-between;
+    flex-direction: column;
+    display: flex;
+}
+
+    .sideMenu .nav-links ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+        .sideMenu .nav-links ul li {
+            margin: 10px;
+        }
+
+            .sideMenu .nav-links ul li.active a {
+                margin: 0 0px;
+                color: #FF6D2E;
+                font-weight: 600;
+            }
+
+
+.OrangeBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 80px auto 30px auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 30px;
+    background-color: #FF6D2E;
+    width: 50%;
+    font-size: 15px;
+}
+
+.ArtistSingle {
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 30px;
+}
+
+.ArtistImage {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 5px;
+    border-radius: 50%;
+    border-color: white;
+    border: 2px solid;
+}
+
+.concertList {
+    display: flex;
+    flex-direction: column;
+}
+
+.concertSingle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom:10px;
+}
+
+.concertDate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 8px;
+    background-color: #332D2A;
+    margin-right: 10px;
+}
+
+.concertPlace{
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+
+.iconaMenu {
+    font-size: 18px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.ProfileImage {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.Name {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.squareButton {
+    border-radius: 15px;
+    border: 2px solid;
+    border-color: #FF6D2E;
+    background-color: #FF6D2E;
+    width: 100px;
+    height: 50px;
+    margin: 10px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: .5s;
+}
+
+    .squareButton:hover {
+        background-color: #332D2A;
+        color: #FF6D2E;
+    }
+
+.roundButton {
+    border-radius: 25px;
+    border: 2px solid;
+    border-color: #332D2A;
+    background-color: #332D2A;
+    width: 250px;
+    height: 50px;
+    font-size: 16px;
+    color: white;
+    transition: .5s;
+}
+
+    .roundButton:hover {
+        background-color: #FF6D2E;
+        color: #332D2A;
+    }
+
+.traspBox {
+    border-radius: 15px;
+    border: 2px solid;
+    border-color: #FF6D2E;
+    background-color: transparent;
+    width: 263px;
+    height: 44px;
+    padding-inline: 15px;
+    font-size: 16px;
+    color: white;
+}
+
+@media (max-width: 425px) {
+    .big-text {
+        font-size: 40px;
+    }
+
+    .intro-text {
+        text-transform: uppercase;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .ml-1 {
+        margin-left: 20px;
+    }
+
+    .ml-3 {
+        margin-left: 20px;
+    }
+
+    .mr-3 {
+        margin-right: 0px;
+    }
+
+    .mt-1 {
+        margin-top: 25px;
+    }
+
+    .navbar .nav-links ul {
+        display: block;
+    }
+}

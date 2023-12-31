@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="favstyle.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Add Favourite Song</title>
+    <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+</head>
+
+<body>
+    <!--Navbar-->
+    <nav class="navbar">
+        <div class="center">
+            <img class="UserLoggedImage" src="UserImage/UserLoggedIMage.jpg" alt="UserImage"> <b> Fra_86 </b>
+        </div>
+        <div>
+            <span class="fa-solid fa-bars iconaMenu"></span>
+        </div>
+    </nav>
+
+    <!--Header-->
+    <div class="settingMenu">
+        <div class="navsetbar tw">
+            <a href="home.html"> <button type="button" class="roundButton"> <i class="fa-solid fa-chevron-left"></i> </button> </a>
+            <div class="OrangeBox">
+                Add Favourite Songs
+            </div>
+            <a href="home.html"> <button type="button" class="roundButton"> <i class="fa-solid fa-check"></i> </button> </a>
+        </div>
+
+        <div style="margin-left:14px">
+            <input type="text" name="artistName" class="traspBox" placeholder="Search"> <i style="position:relative; right: 35px;" class="fa-solid fa-magnifying-glass tw"></i> <br><br />
+        </div>
+
+        <div class="OrangeBox2 tw">
+            <div class="song">
+                <img class="AlbumImage" src="AlbumImage/SpigoliImage.jfif" alt="UserImage">
+                <div> Spigoli </div>
+                <i class="fa-solid fa-circle-plus"></i>
+            </div>
+
+            <div class="song">
+                <img class="AlbumImage" src="AlbumImage/IlBeneNelMaleImage.jfif" alt="UserImage">
+                <div> Il bene nel male </div>
+                <i class="fa-solid fa-circle-plus"></i>
+            </div>
+
+            <div class="song">
+                <img class="AlbumImage" src="AlbumImage/HopeImage.jfif" alt="UserImage">
+                <div> Hope </div>
+                <i class="fa-solid fa-circle-plus"></i>
+            </div>
+
+            <div class="song">
+                <img class="AlbumImage" src="AlbumImage/molecoleImage.jfif" alt="UserImage">
+                <div> molecole (interlude) </div>
+                <i class="fa-solid fa-circle-plus"></i>
+            </div>
+
+            <div class="song">
+                <img class="AlbumImage" src="AlbumImage/CrazyImage.jfif" alt="UserImage">
+                <div> Crazy </div>
+                <i class="fa-solid fa-circle-plus"></i>
+            </div>
+
+            <div class="song">
+                <img class="AlbumImage" src="AlbumImage/HoPauraDiUscireImage.jfif" alt="UserImage">
+                <div> Ho paura di uscire </div>
+                <i class="fa-solid fa-circle-plus"></i>
+            </div>
+
+            <div class="song">
+                <img class="AlbumImage" src="AlbumImage/HopeImage.jfif" alt="UserImage">
+                <div> SAD! </div>
+                <i class="fa-solid fa-circle-plus"></i>
+            </div>
+
+            <div class="song">
+                <img class="AlbumImage" src="AlbumImage/ChiSeiTeImage.jfif" alt="UserImage">
+                <div> ch1 5ei te </div>
+                <i class="fa-solid fa-circle-plus"></i>
+            </div>
+
+            <div class="song">
+                <img class="AlbumImage" src="AlbumImage/DilemmeImage.jfif" alt="UserImage">
+                <div> Dilemme </div>
+                <i class="fa-solid fa-circle-plus"></i>
+            </div>
+
+            <div class="song">
+                <img class="AlbumImage" src="AlbumImage/SpacetripImage.jfif" alt="UserImage">
+                <div> Spacetrip </div>
+                <i class="fa-solid fa-circle-plus"></i>
+            </div>
+        </div>
+    </div>
+
+    <nav class="sideMenu">
+        <div class="nav-links">
+            <ul>
+                <li><i class="fa-solid fa-xmark iconaMenu"></i></li>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="editProf.html">Edit Profile</a></li>
+                <li><a href="editFavArtist.html">Edit Favourite Artist</a></li>
+                <li><a href="editFavSong.html">Edit Favourite Song</a></li>
+                <li><a href="editLink.html">Edit Link</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+
+            <ul>
+                <li><a href="https://www.instagram.com/nk735_/">@nk735</a></li>
+                <li><a href="https://www.instagram.com/andrea_damb17/">@andrea_damb</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.iconaMenu').click(function () { $('.sideMenu').toggleClass('openSideMenu') })
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('.fa-heart').click(function () { $(this).toggleClass('fa-solid') })
+        });
+    </script>
+</body>
+</html>
